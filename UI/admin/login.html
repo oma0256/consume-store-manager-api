@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../static/css/login.css">
+  <title>Store Manager | Login</title>
+</head>
+<body>
+  <div class="header">
+    <div class="container">
+      <h1><a href="../index.html">Store Manager</a></h1>
+      <div class="navbar-right">
+        <ul>
+          <li><a class="modal-display">Register</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="create-modal" class="modal">
+      <div class="modal-content">
+        <h2>Register as a Store Owner</h2>
+        <span class="close">&times;</span>
+        <form action="product-detail.html">
+            <label>First Name</label><br>
+            <input type="text">
+            <label>Last Name</label><br>
+            <input type="text">
+            <label>Email</label><br>
+            <input type="email">
+            <label>Password</label><br>
+            <input type="password"><br>
+            <label>Confirm Password</label><br>
+            <input type="password">
+            <button type="submit" class="modal-btn">Register</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card">
+      <h1>Store Owner Login</h1>
+      <div class="login-form">
+        <form action="products.html">
+          <label>Email</label><br>
+          <input type="email"><br>
+          <label>Password</label><br>
+          <input type="password"><br>
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="../static/js/modal.js"></script>
+</body>
+</html>

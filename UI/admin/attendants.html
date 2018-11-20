@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../static/css/users.css">
+  <title>Store Manager | Attendants</title>
+</head>
+<body>
+  <div class="header">
+    <div class="container">
+      <h1><a href="../index.html">Store Manager</a></h1>
+      <div class="navbar-left">
+        <ul>
+          <li><a href="sales.html">Sales</a></li>
+          <li><a href="attendants.html" class="active">Attendants</a></li>
+          <li><a href="products.html">Products</a></li>
+        </ul>
+      </div>
+      <div class="navbar-right">
+        <ul>
+          <li><a href="login.html">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="container">
+      <button id="add-attendant" class="modal-display">Add Attendant</button>
+      <div id="create-modal" class="modal">
+        <div class="modal-content">
+          <h2>Add Store Attendant</h2>
+          <span class="close">&times;</span>
+          <form action="product-detail.html">
+            <label>First Name</label><br>
+            <input type="text">
+            <label>Last Name</label><br>
+            <input type="text">
+            <label>Email</label><br>
+            <input type="email">
+            <label>Password</label><br>
+            <input type="password">
+            <label>Confirm Password</label><br>
+            <input type="password">
+            <input type="checkbox">Admin
+            <button type="submit" class="modal-btn">Submit</button>
+          </form>
+        </div>
+      </div>
+      <h1 class="center-head">Store Attendants</h1>
+      <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Number of Sales</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>John Doe</td>
+          <td>25</td>
+          <td><a href="attendant_profile.html"><button class="attendant-btn">View</button></a></td>
+        </tr>
+        <tr>
+          <td><a>Lionel Messi</a></td>
+          <td>70</td>
+          <td><a href="attendant_profile.html"><button class="attendant-btn">View</button></a></td>
+        </tr>
+        <tr>
+          <td><a>Paul Pogba</a></td>
+          <td>80</td>
+          <td><a href="attendant_profile.html"><button class="attendant-btn">View</button></a></td>
+        </tr>
+        <tr>
+          <td><a>Anthony Martial</a></td>
+          <td>90</td>
+          <td><a href="attendant_profile.html"><button class="attendant-btn">View</button></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+<script src="../static/js/modal.js"></script>
+</body>
+</html>

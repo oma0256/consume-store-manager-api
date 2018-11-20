@@ -1,0 +1,48 @@
+/* Design the index page */
+#description, #login-options {
+  text-align: center;
+}
+
+#description p {
+  font-size: 40px;
+}
+
+#login-options button {
+  padding: 25px;
+  margin: 25px;
+  border-radius: 15px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+#login-owner {
+  background-color: #007bff;
+}
+
+#login-attendant {
+  background-color: #ed9e17;
+}
+
+#login-owner:hover {
+  background-color: #ffffff;
+  color: #007bff;
+  border: solid 1px #007bff;
+}
+
+#login-attendant:hover {
+  background-color: #ffffff;
+  color: #ed9e17;
+  border: solid 1px #ed9e17;
+}
+
+/*Make site responsive for screens smaller than 768px*/
+@media(max-width: 768px){
+  /* Remove the description */
+  #description p {
+    display: none;
+  }
+  #login-options button {
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,32 @@
+/* Design an attendant profile page */
+#attendant-profile {
+  margin-bottom: 100px;
+}
+
+#make-admin {
+  padding: 10px;
+  background-color: #4caf50;
+  color: #ffffff;
+}
+
+.profile-img {
+  float: left;
+  margin-right: 50px;
+  width: 35%;
+}
+
+/*Make site responsive for smaller screens*/
+@media(max-width: 768px){
+  /* Stack up the image ontop of the description */
+  .profile-img {
+    float: none;
+    margin: auto;
+  }
+  .profile-desc{
+    text-align: center;
+  }
+  #attendant-profile {
+    margin-bottom: 0;
+  }  
+}
+

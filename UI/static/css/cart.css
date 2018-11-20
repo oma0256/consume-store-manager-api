@@ -1,0 +1,32 @@
+/*Design the cart page*/
+#cart {
+  text-align: center;
+}
+
+.product-side {
+  display: inline-block;
+  width: 20%;
+}
+
+.quantity-side {
+  display: inline-block;
+  width: 20%;
+}
+
+.price-side {
+  display: inline-block;
+  width: 20%;
+  text-align: center;
+}
+
+.remove-side {
+  display: inline-block;
+  width: 20%;
+}
+
+.remove-from-cart {
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #c82333;
+  color: #ffffff;
+}

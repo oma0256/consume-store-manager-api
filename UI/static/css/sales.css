@@ -1,0 +1,10 @@
+/* Design sales record page */
+/*Make site responsive for smaller screens of width 625px and below*/
+@media(max-width: 625px){
+  .table {
+    font-size: 10px;
+  }
+  .card {
+    margin: 0;
+  }
+}

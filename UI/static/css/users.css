@@ -1,0 +1,16 @@
+/* Design page containing store attendants */
+#add-attendant {
+  margin-top: 50px;
+  margin-left: 0;
+  width: 23.5%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.attendant-btn {
+  padding: 20px;
+  background-color: #4caf50;
+  color: #ffffff;
+  border-radius: 5px;
+}
