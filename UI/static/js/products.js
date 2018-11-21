@@ -46,6 +46,37 @@ http
     }
   });
 
+// Function to add a product
+const addProduct = e => {
+  e.preventDefault();
+  // Select product attributes
+  const name = document.querySelector("#product-name").value;
+  const unitCost = document.querySelector("#product-price").value;
+  const quantity = document.querySelector("#product-quantity").value;
+  const category = document.querySelector("#product-category").value;
+  const productData = {
+    name: name,
+    unit_cost: parseInt(unitCost),
+    quantity: parseInt(quantity),
+    category_id: category
+  };
+  // Make a request to add a product
+  http
+    .post(
+      "https://oma-store-manager-api.herokuapp.com/api/v2/products",
+      productData
+    )
+    .then(function(res) {
+      if (res.status === 201) {
+        productForm.submit();
+      }
+    });
+};
+
+const productForm = document.querySelector("#product-form");
+// Listen for from submission
+productForm.addEventListener("submit", addProduct);
+
 // Function to store product id
 const storeProductId = e => {
   e.preventDefault();
