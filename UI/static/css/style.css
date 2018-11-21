@@ -1,5 +1,5 @@
 /* Contain classes used on multiple pages */
-body{
+body {
   margin: 0;
   padding: 0;
   font: 15px/1.5 Arial;
@@ -13,7 +13,7 @@ ul {
 
 /* Style navbar */
 .header {
-  background-color: #24292E;
+  background-color: #24292e;
   color: #ffffff;
   min-height: 70px;
 }
@@ -44,7 +44,7 @@ a {
   float: left;
 }
 
-.navbar-right{
+.navbar-right {
   padding-top: 1px;
 }
 
@@ -52,16 +52,19 @@ a {
   padding-top: 25px;
 }
 
-.navbar-right ul, .navbar-left ul {
+.navbar-right ul,
+.navbar-left ul {
   list-style: none;
 }
 
-.navbar-right ul li, .navbar-left ul li {
+.navbar-right ul li,
+.navbar-left ul li {
   padding: 5px;
   margin: 0;
 }
 
-.navbar-right ul li a, .navbar-left ul li a {
+.navbar-right ul li a,
+.navbar-left ul li a {
   font-size: 20px;
   cursor: pointer;
 }
@@ -85,7 +88,11 @@ button {
 }
 
 /* Style input fields */
-input[type="email"], input[type="password"], input[type="text"], input[type="number"], select {
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="number"],
+select {
   padding: 10px;
   width: 100%;
   margin-bottom: 20px;
@@ -100,8 +107,8 @@ input[type="email"], input[type="password"], input[type="text"], input[type="num
   z-index: 1;
   width: 100%;
   height: 100%;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
   display: none;
 }
 
@@ -111,7 +118,7 @@ input[type="email"], input[type="password"], input[type="text"], input[type="num
   background-color: #ffffff;
   padding: 20px;
   margin-top: 50px;
-  border: 1px solid #24292E;
+  border: 1px solid #24292e;
 }
 
 .modal-content h2 {
@@ -150,12 +157,13 @@ input[type="email"], input[type="password"], input[type="text"], input[type="num
   font-size: 20px;
 }
 
-.table td, .table th {
+.table td,
+.table th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-.table tr:nth-child(even){
+.table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
@@ -166,13 +174,13 @@ input[type="email"], input[type="password"], input[type="text"], input[type="num
 .table th {
   padding: 12px 0;
   text-align: left;
-  background-color: #24292E;
+  background-color: #24292e;
   color: #ffffff;
 }
 
 .table a {
   text-decoration: none;
-  color: #24292E;
+  color: #24292e;
 }
 
 /* Style to center different elements */
@@ -180,19 +188,34 @@ input[type="email"], input[type="password"], input[type="text"], input[type="num
   text-align: center;
 }
 
+/* Style color for success and error */
+.success {
+  background-color: #28a745;
+  color: #ffffff;
+}
+
+.error {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+
 /*Make site responsive for smaller screens of width 768px and below*/
-@media(max-width: 768px){
-  .header h1, .navbar-right li, .navbar-left li {
+@media (max-width: 768px) {
+  .header h1,
+  .navbar-right li,
+  .navbar-left li {
     float: none;
   }
 
-  .header, .navbar-right, .navbar-left {
+  .header,
+  .navbar-right,
+  .navbar-left {
     text-align: center;
   }
 }
 
 /*Make site responsive for screens smaller than 600px*/
-@media(max-width: 600px){
+@media (max-width: 600px) {
   /* Remove the margin from the card */
   .card {
     margin: 0;

@@ -35,12 +35,14 @@ function loginUser(e) {
         localStorage.setItem("jsutLoggedIn", true);
         loginForm.submit();
       } else {
-        const createModal = document.querySelector("#create-modal");
+        const loginCard = document.querySelector("#login-card");
         const loginContainer = document.querySelector("#login-container");
+        // Create error message div
         const msg = document.createElement("div");
         msg.className = "error";
         msg.appendChild(document.createTextNode(res.data.error));
-        loginContainer.insertBefore(msg, createModal);
+        // Append error message to web page
+        loginContainer.insertBefore(msg, loginCard);
       }
     });
 }
