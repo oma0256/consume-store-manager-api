@@ -1,15 +1,28 @@
 /* Design the products page */
 .products {
-  margin-left: 100px;
+  margin-top: 50px;
 }
 
 .product {
-  border: 1px solid #24292E;
-  width: 25%;
+  border: 1px solid #24292e;
+  width: 50%;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+.product-desc {
   display: inline-block;
-  text-align: center;
-  margin: 10px;
-  background-color: #ffffff;
+}
+
+.product-detail {
+  margin-top: 35px;
+  float: right;
+  padding: 10px;
+  display: block;
+  width: 20%;
+  background-color: #007bff;
+  color: #ffffff;
 }
 
 .search-sec {
@@ -27,7 +40,6 @@
 }
 
 #add-product {
-  margin-top: 50px;
   margin-left: 100px;
   width: 23.5%;
   padding: 10px;
@@ -40,16 +52,17 @@
   background-color: #007bff;
   color: #ffffff;
   margin-bottom: 2px;
+  float: right;
 }
 
 /*Make site responsive for screens smaller than 768px*/
-@media(max-width: 768px){
+@media (max-width: 768px) {
   /* Center the products div */
   .products {
     margin: auto;
   }
   /* Display one product per row */
- .product {
+  .product {
     display: block;
     width: 100%;
   }
