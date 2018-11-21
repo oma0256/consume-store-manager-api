@@ -1,9 +1,4 @@
 /* Design a single product page */
-#img-side {
-  display: inline-block;
-  width: 25%;
-}
-
 #desc-side {
   display: inline-block;
   width: 25%;
@@ -13,7 +8,8 @@
 }
 
 #btn-side {
-  display: inline-block;
+  float: right;
+  margin-top: 100px;
 }
 
 #edit-btn {
@@ -26,7 +22,7 @@
   margin-bottom: 5px;
 }
 
-#delete-btn {
+.delete-btn {
   padding: 10px;
   width: 100px;
   border-radius: 10px;
@@ -36,9 +32,11 @@
 }
 
 /* Make site responsive for devices with width or 980px or less */
-@media(max-width: 980px){
+@media (max-width: 980px) {
   /* Stack up the divs ontop of each other instead of leaving them inline with each other */
-  #img-side, #desc-side, #btn-side {
+  #img-side,
+  #desc-side,
+  #btn-side {
     display: block;
     width: 100%;
     text-align: center;

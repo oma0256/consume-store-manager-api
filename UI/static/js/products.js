@@ -45,3 +45,23 @@ http
       }
     }
   });
+
+// Function to store product id
+const storeProductId = e => {
+  e.preventDefault();
+  // Check if details button has been clicked
+  if (e.target.className == "product-detail") {
+    // Get the product's id
+    const productId = e.target.parentElement.nextElementSibling.value;
+    // Store the product's id
+    localStorage.setItem("productId", productId);
+    if (isAdmin == "true") {
+      window.location = "http://127.0.0.1:5500/UI/admin/product-detail.html";
+    } else {
+      window.location =
+        "http://127.0.0.1:5500/UI/attendant/product-detail.html";
+    }
+  }
+};
+
+windows.addEventListener("click", storeProductId);
