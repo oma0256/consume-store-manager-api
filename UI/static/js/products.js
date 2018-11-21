@@ -95,4 +95,4 @@ const storeProductId = e => {
   }
 };
 
-windows.addEventListener("click", storeProductId);
+window.addEventListener("click", storeProductId);

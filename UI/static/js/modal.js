@@ -5,26 +5,15 @@ const close = document.querySelector(".close");
 // Select modal
 const modal = document.querySelector(".modal");
 
-// Listen for click on button to display modal
-modalDisplayBtn.addEventListener("click", displayModal);
-// Listen for click on close symbol
-close.addEventListener("click", closeModal);
-// Listen for click on browser window
-window.addEventListener("click", closeModalAgain);
-
-// Function to display modal
-function displayModal(e){
-  modal.style.display = "block";
-}
-
-// Function called to close modal when the close symbol is clicked
-function closeModal(e){
-  modal.style.display = "none";
-}
-
-// Function called to close modal when the browser window is clicked
-function closeModalAgain(e){
-  if(e.target == modal){
+// Function called to close or display modal
+const toggleModal = e => {
+  if (e.target == modal || e.target == close) {
     modal.style.display = "none";
   }
-}
+  if (e.target.className == "modal-display") {
+    modal.style.display = "block";
+  }
+};
+
+// Listen for click on browser window
+window.addEventListener("click", toggleModal);
