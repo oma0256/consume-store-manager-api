@@ -55,6 +55,7 @@ http
     }
   });
 
+// Function to edit or delete product
 const editDeleteProduct = e => {
   const editForm = document.querySelector("#product-edit");
   if (e.target.className == "modal-display") {
@@ -97,9 +98,20 @@ const editDeleteProduct = e => {
         `https://oma-store-manager-api.herokuapp.com/api/v2/products/${productId}`,
         productData
       )
-      .then(function(res) {
+      .then(res => {
         if (res.status == 200) {
           editForm.submit();
+        }
+      });
+  }
+  if (e.target.className == "delete-btn") {
+    http
+      .delete(
+        `https://oma-store-manager-api.herokuapp.com/api/v2/products/${productId}`
+      )
+      .then(res => {
+        if (res.status == 200) {
+          window.location = "http://127.0.0.1:5500/UI/admin/products.html";
         }
       });
   }
