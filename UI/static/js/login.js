@@ -1,11 +1,9 @@
 // Select login form
 const loginForm = document.querySelector("#login-form");
 http = new Http();
-// Listen for form submission
-loginForm.addEventListener("submit", loginUser);
 
 // Function to handle user login
-function loginUser(e) {
+const loginUser = e => {
   e.preventDefault();
   // Get user login details
   const email = document.querySelector("#email").value;
@@ -21,7 +19,7 @@ function loginUser(e) {
       "https://oma-store-manager-api.herokuapp.com/api/v2/auth/login",
       loginData
     )
-    .then(function(res) {
+    .then(res => {
       // Check if the request was successful
       if (res.status === 200) {
         // Check if it's store owner
@@ -39,10 +37,17 @@ function loginUser(e) {
         const loginContainer = document.querySelector("#login-container");
         // Create error message div
         const msg = document.createElement("div");
-        msg.className = "error";
+        msg.className = "msg-display error";
         msg.appendChild(document.createTextNode(res.data.error));
         // Append error message to web page
         loginContainer.insertBefore(msg, loginCard);
+        // Notification should disappear after 1.5s
+        setTimeout(() => {
+          document.querySelector(".msg-display").remove();
+        }, 2500);
       }
     });
-}
+};
+
+// Listen for form submission
+loginForm.addEventListener("submit", loginUser);

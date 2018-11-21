@@ -16,6 +16,7 @@ ul {
   background-color: #24292e;
   color: #ffffff;
   min-height: 70px;
+  margin-bottom: 5px;
 }
 
 .active {
@@ -189,14 +190,21 @@ select {
 }
 
 /* Style color for success and error */
+.msg-display {
+  color: #ffffff;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+  width: 50%;
+  font-size: 20px;
+}
+
 .success {
   background-color: #28a745;
-  color: #ffffff;
 }
 
 .error {
   background-color: #dc3545;
-  color: #ffffff;
 }
 
 /*Make site responsive for smaller screens of width 768px and below*/
