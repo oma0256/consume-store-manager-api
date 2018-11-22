@@ -1,72 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="../static/css/style.css">
-  <link rel="stylesheet" href="../static/css/sales.css">
-  <title>Store Manager | Sales</title>
-</head>
-<body>
-  <div class="header">
-    <div class="container">
-      <h1><a href="../index.html">Store Manager</a></h1>
-      <div class="navbar-left">
-        <ul>
-          <li><a href="sales.html" class="active">Sales</a></li>
-          <li><a href="attendants.html">Attendants</a></li>
-          <li><a href="products.html">Products</a></li>
-        </ul>
-      </div>
-      <div class="navbar-right">
-        <ul>
-          <li><a href="login.html">Logout</a></li>
-        </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/sales.css" />
+    <title>Store Manager | Sales</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <h1><a href="../index.html">Store Manager</a></h1>
+        <div class="navbar-left">
+          <ul>
+            <li><a href="sales.html" class="active">Sales</a></li>
+            <li><a href="attendants.html">Attendants</a></li>
+            <li><a href="products.html">Products</a></li>
+          </ul>
+        </div>
+        <div class="navbar-right">
+          <ul>
+            <li><a href="login.html">Logout</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="card">
-    <h1 class="center-head">Sales Records</h1>
-    <table class="table">
-      <tr>
-        <th>Date</th>
-        <th>Product</th>
-        <th>Attendant</th>
-        <th>Quantity</th>
-        <th>Amount</th>
-      </tr>
-      <tr>
-        <td>08/10/2018</td>
-        <td>Belt</td>
-        <td>John Doe</td>
-        <td>2</td>
-        <td>20000</td>
-      </tr>
-      <tr>
-        <td>08/10/2018</td>
-        <td>Bag</td>
-        <td>Lionel Messi</td>
-        <td>3</td>
-        <td>150000</td>
-      </tr>
-      <tr>
-        <td>10/10/2018</td>
-        <td>Watch</td>
-        <td>Paul Pogba</td>
-        <td>1</td>
-        <td>90000</td>
-      </tr>
-      <tr>
-        <td>10/10/2018</td>
-        <td>Jean</td>
-        <td>Anthony Martial</td>
-        <td>1</td>
-        <td>30000</td>
-      </tr>
-    </table>
-  </div>
+    <div class="card" id="sale-records"></div>
 
-</body>
+    <script src="../static/js/http.js"></script>
+    <script src="../static/js/sales.js"></script>
+  </body>
 </html>
