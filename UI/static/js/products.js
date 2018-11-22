@@ -1,5 +1,6 @@
 const http = new Http();
 const isAdmin = localStorage.getItem("isAdmin");
+const productsArea = document.querySelector(".products");
 
 // Make a request to get all products
 http
@@ -8,7 +9,6 @@ http
     // Check if request was successful
     if (res.status === 200) {
       const products = res.data.products;
-      const productsArea = document.querySelector(".products");
       let output = "";
       // Check if there are products
       if (products.length < 1) {
@@ -18,7 +18,7 @@ http
           if (isAdmin == "true") {
             output += `<div class="product"><div class="product-desc"><h2>${
               product.name
-            }</h2><h3>Price: UGX ${
+            }</h2><h3>${
               product.unit_cost
             }</h3></div><a href="product-detail.html"><button class="product-detail">Details</button></a><input type="hidden" value=${
               product.id
@@ -26,7 +26,7 @@ http
           } else {
             output += `<div class="product"><div class="product-desc"><h2>${
               product.name
-            }</h2><h3>Price: UGX ${
+            }</h2><h3>${
               product.unit_cost
             }</h3></div><a href="cart.html"><button class="add-to-cart">Add to Cart</button></a><a href="product-detail.html"><button class="product-detail">Details</button></a><input type="hidden" value=${
               product.id
@@ -73,9 +73,11 @@ const addProduct = e => {
     });
 };
 
-const productForm = document.querySelector("#product-form");
-// Listen for from submission
-productForm.addEventListener("submit", addProduct);
+if (isAdmin == "true") {
+  const productForm = document.querySelector("#product-form");
+  // Listen for from submission
+  productForm.addEventListener("submit", addProduct);
+}
 
 // Function to store product id
 const storeProductId = e => {
@@ -84,6 +86,7 @@ const storeProductId = e => {
   if (e.target.className == "product-detail") {
     // Get the product's id
     const productId = e.target.parentElement.nextElementSibling.value;
+    console.log(productId);
     // Store the product's id
     localStorage.setItem("productId", productId);
     if (isAdmin == "true") {
@@ -96,3 +99,23 @@ const storeProductId = e => {
 };
 
 window.addEventListener("click", storeProductId);
+
+const addToCart = e => {
+  e.preventDefault();
+  if (e.target.className == "add-to-cart") {
+    const productName =
+      e.target.parentElement.previousElementSibling.childNodes[0].innerHTML;
+    const productPrice =
+      e.target.parentElement.previousElementSibling.childNodes[1].innerHTML;
+    const productId =
+      e.target.parentElement.nextElementSibling.nextElementSibling.value;
+    const product = {
+      productName: productName,
+      productPrice: productPrice,
+      productId: productId
+    };
+    localStorage.setItem("cart", JSON.stringify(product));
+  }
+};
+
+productsArea.addEventListener("click", addToCart);
