@@ -30,3 +30,20 @@
   background-color: #c82333;
   color: #ffffff;
 }
+
+#make-sale {
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #1e7e34;
+  color: #ffffff;
+}
+
+#make-sale:hover {
+  background-color: #ffffff;
+  color: #1e7e34;
+  border: solid 1px #1e7e34;
+}
+
+#sale-side {
+  margin-top: 15px;
+}

@@ -1,86 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="../static/css/style.css">
-  <link rel="stylesheet" href="../static/css/cart.css">
-  <title>Store Manager | Cart</title>
-</head>
-<body>
-  <div class="header">
-    <div class="container">
-      <h1><a href="../index.html">Store Manager</a></h1>
-      <div class="navbar-left">
-        <ul>
-          <li><a href="cart.html" class="active">Cart</a></li>
-          <li><a href="profile.html">Profile</a></li>
-          <li><a href="products.html">Products</a></li>
-        </ul>
-      </div>
-      <div class="navbar-right">
-        <ul>
-          <li><a href="login.html">Logout</a></li>
-        </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/cart.css" />
+    <title>Store Manager | Cart</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <h1><a href="../index.html">Store Manager</a></h1>
+        <div class="navbar-left">
+          <ul>
+            <li><a href="cart.html" class="active">Cart</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="products.html">Products</a></li>
+          </ul>
+        </div>
+        <div class="navbar-right">
+          <ul>
+            <li><a href="login.html">Logout</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="card">
-    <div class="container">
-      <h1 class="center-head">Cart</h1>
-      <div id="cart">
-        <div class="cart-item">
-          <div class="product-side">
-            <h3>Belt</h3>
-          </div>
-          <div class="quantity-side">
-            <input type="hidden" value="2">
-            <input type="number" value="2" class="quantity">
-          </div>
-          <div class="price-side">
-            <p>20000</p>
-          </div>
-          <div class="remove-side">
-            <button class="remove-from-cart">Remove</button>
-          </div>
+    <div class="card">
+      <div class="container">
+        <h1 class="center-head">Cart</h1>
+        <div id="cart"></div>
+        <div class="center-head" id="sale-side">
+          <a><button id="make-sale">Make A Sale</button></a>
         </div>
-        <div class="cart-item">
-          <div class="product-side">
-            <h3>Bag</h3>
-          </div>
-          <div class="quantity-side">
-              <input type="hidden" value="1">
-            <input type="number" value="1" class="quantity">
-          </div>
-          <div class="price-side">
-            <p>50000</p>
-          </div>
-          <div class="remove-side">
-            <button class="remove-from-cart">Remove</button>
-          </div>
-        </div>
-          <div class="cart-item">
-            <div class="product-side">
-              <h3>Watch</h3>
-            </div>
-            <div class="quantity-side">
-              <input type="hidden" value="1">
-              <input type="number" value="1" class="quantity">
-            </div>
-            <div class="price-side">
-              <p>90000</p>
-            </div>
-            <div class="remove-side">
-              <button class="remove-from-cart">Remove</button>
-            </div>
-          </div>
-          <strong>Total:</strong> <span id="total">160000</span>
       </div>
     </div>
-  </div>
 
-  <script src="../static/js/cart.js"></script>
-</body>
+    <script src="../static/js/cart.js"></script>
+  </body>
 </html>

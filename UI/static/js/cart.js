@@ -1,14 +1,24 @@
 // Select cart
 const cart = document.querySelector("#cart");
-const total = document.querySelector("#total");
-// Get the total amount of items in cart
-let totalAmount = total.textContent;
+let product = localStorage.getItem("cart");
+product = JSON.parse(product);
+
+cart.innerHTML = `<div class="cart-item"><div class="product-side"><h3>${
+  product.productName
+}</h3></div><div class="quantity-side"><input type="hidden" value="1"><input type="number" value="1" class="quantity"></div><div class="price-side"><p>${
+  product.productPrice
+}</p></div><div class="remove-side"><button class="remove-from-cart">Remove</button></div></div><strong>Total:</strong> <span id="total">${
+  product.productPrice
+}</span>`;
 
 const calculateCartAmount = (price, e) => {
   // Select cart item
   const cartItem = e.target.parentElement.parentElement;
   // Remove item from cart
   cartItem.style.display = "none";
+  let totalAmount =
+    e.target.parentElement.parentElement.nextElementSibling.nextElementSibling
+      .textContent;
   // Recalculate the total amount of the remaining cart items
   totalAmount = parseInt(totalAmount) - parseInt(price);
   total.textContent = totalAmount;
@@ -50,6 +60,9 @@ const updateCart = e => {
       // Calculate the amount of the cat item
       const cartItemAmount = parseInt(currentQty) * productAmount;
       // Calculate the total amount of all the cart items
+      let totalAmount =
+        e.target.parentElement.parentElement.nextElementSibling
+          .nextElementSibling.textContent;
       totalAmount =
         parseInt(totalAmount) - parseInt(price.textContent) + cartItemAmount;
       price.textContent = cartItemAmount;
