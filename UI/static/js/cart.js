@@ -1,15 +1,21 @@
 // Select cart
 const cart = document.querySelector("#cart");
+const makeSaleBtn = document.querySelector("#make-sale");
+const http = new Http();
 let product = localStorage.getItem("cart");
-product = JSON.parse(product);
 
-cart.innerHTML = `<div class="cart-item"><div class="product-side"><h3>${
-  product.productName
-}</h3></div><div class="quantity-side"><input type="hidden" value="1"><input type="number" value="1" class="quantity"></div><div class="price-side"><p>${
-  product.productPrice
-}</p></div><div class="remove-side"><button class="remove-from-cart">Remove</button></div></div><strong>Total:</strong> <span id="total">${
-  product.productPrice
-}</span>`;
+if (product == "empty") {
+  cart.innerHTML = "<h2>Cart is empty, go to products to make more sales</h2>";
+} else {
+  product = JSON.parse(product);
+  cart.innerHTML = `<div class="cart-item"><div class="product-side"><h3>${
+    product.productName
+  }</h3></div><div class="quantity-side"><input type="hidden" value="1"><input type="number" value="1" class="quantity"></div><div class="price-side"><p>${
+    product.productPrice
+  }</p></div><div class="remove-side"><button class="remove-from-cart">Remove</button></div></div><strong>Total:</strong> <span id="total">${
+    product.productPrice
+  }</span>`;
+}
 
 const calculateCartAmount = (price, e) => {
   // Select cart item
@@ -72,7 +78,26 @@ const updateCart = e => {
   }
 };
 
+const makeSale = e => {
+  e.preventDefault();
+  const quantity = document.querySelector(".quantity").value;
+  const sale = {
+    product_id: parseInt(product.productId),
+    quantity: parseInt(quantity)
+  };
+  http
+    .post("https://oma-store-manager-api.herokuapp.com/api/v2/sales", sale)
+    .then(res => {
+      if (res.status == 201) {
+        cart.innerHTML =
+          "<h2>Cart is empty, go to products to make more sales</h2>";
+        localStorage.setItem("cart", "empty");
+      }
+    });
+};
+
 // Listen for a click on cart
 cart.addEventListener("click", removeItem);
 // List for a change on cart
 cart.addEventListener("change", updateCart);
+makeSaleBtn.addEventListener("click", makeSale);
