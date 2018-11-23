@@ -2,6 +2,12 @@
 const loginForm = document.querySelector("#login-form");
 const http = new Http();
 const ui = new UI();
+const unauthorized = localStorage.getItem("unauthorized");
+
+if (unauthorized == "true") {
+  ui.showAlert("Please login", "msg-display error");
+  localStorage.setItem("unauthorized", false);
+}
 
 // Function to handle user login
 const loginUser = e => {

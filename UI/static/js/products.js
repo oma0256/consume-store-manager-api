@@ -2,6 +2,8 @@ const http = new Http();
 const ui = new UI();
 const isAdmin = localStorage.getItem("isAdmin");
 const justLoggedIn = localStorage.getItem("justLoggedIn");
+const productsArea = document.querySelector(".products");
+const productsContainer = document.querySelector("#products-container");
 
 if (justLoggedIn == "true") {
   ui.showAlert("Welcome", "msg-display success");
@@ -18,12 +20,7 @@ http
       ui.showProducts(products);
       // Run if products weren't fetched
     } else {
-      localStorage.setItem("unauthorized", "true");
-      if (isAdmin == "true") {
-        window.location = "http://127.0.0.1:5500/UI/admin/login.html";
-      } else {
-        window.location = "http://127.0.0.1:5500/UI/attendant/login.html";
-      }
+      handleUnauthorization();
     }
   });
 
@@ -50,6 +47,11 @@ const addProduct = e => {
     .then(function(res) {
       if (res.status === 201) {
         productForm.submit();
+      } else if (res.status == 401) {
+        handleUnauthorization();
+      } else {
+        modal.style.display = "none";
+        ui.showAlert(res.data.error, "msg-display error");
       }
     });
 };
@@ -67,7 +69,6 @@ const storeProductId = e => {
   if (e.target.className == "product-detail") {
     // Get the product's id
     const productId = e.target.parentElement.nextElementSibling.value;
-    console.log(productId);
     // Store the product's id
     localStorage.setItem("productId", productId);
     if (isAdmin == "true") {
@@ -79,7 +80,7 @@ const storeProductId = e => {
   }
 };
 
-window.addEventListener("click", storeProductId);
+productsContainer.addEventListener("click", storeProductId);
 
 const addToCart = e => {
   e.preventDefault();
@@ -96,6 +97,7 @@ const addToCart = e => {
       productId: productId
     };
     localStorage.setItem("cart", JSON.stringify(product));
+    window.location = "http://127.0.0.1:5500/UI/attendant/cart.html";
   }
 };
 
