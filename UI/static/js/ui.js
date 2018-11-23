@@ -38,4 +38,29 @@ class UI {
       salesArea.innerHTML = output;
     }
   }
+
+  showProducts(products) {
+    const productsArea = document.querySelector(".products");
+    const isAdmin = localStorage.getItem("isAdmin");
+    let output = "";
+    // Check if there are products
+    if (products.length < 1) {
+      output += "<h2 class='center-head'>There are no products yet</h2>";
+    } else {
+      products.forEach(product => {
+        output += `<div class="product"><div class="product-desc"><h2>${
+          product.name
+        }</h2><h3>${
+          product.unit_cost
+        }</h3></div><a href="product-detail.html"><button class="product-detail">Details</button></a><input type="hidden" value=${
+          product.id
+        } id="product-id"></div>`;
+        if (isAdmin == "false") {
+          output += `<a href="cart.html"><button class="add-to-cart">Add to Cart</button></a>`;
+        }
+      });
+    }
+    // Add products to web page
+    productsArea.innerHTML = output;
+  }
 }
