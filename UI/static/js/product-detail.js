@@ -26,25 +26,7 @@ http
 const editDeleteProduct = e => {
   const editForm = document.querySelector("#product-edit");
   if (e.target.className == "modal-display") {
-    if (varPro.category) {
-      output = `<label>Name</label><br><input type="text" id="product-name" value=${
-        varPro.name
-      }><label>Price</label><br><input type="number" id="product-price" value=${
-        varPro.unit_cost
-      }><label>Quantity</label><br><input type="number" id="product-quantity" value=${
-        varPro.quantity
-      }><label>Category</label><br><input type="text" id="product-category" value=${
-        varPro.category
-      }><button type="submit" class="modal-btn">Submit</button>`;
-    }
-    output = `<label>Name</label><br><input type="text" id="product-name" value=${
-      varPro.name
-    }><label>Price</label><br><input type="number" id="product-price" value=${
-      varPro.unit_cost
-    }><label>Quantity</label><br><input type="number" id="product-quantity" value=${
-      varPro.quantity
-    }><label>Category</label><br><input type="text" id="product-category" value="Select a Category"><button type="submit" class="modal-btn">Submit</button>`;
-    editForm.innerHTML = output;
+    ui.showEditProduct(varPro);
   }
   if (e.target.className == "modal-btn") {
     e.preventDefault();
@@ -68,6 +50,11 @@ const editDeleteProduct = e => {
       .then(res => {
         if (res.status == 200) {
           editForm.submit();
+        } else if (res.status == 401) {
+          handleUnauthorization();
+        } else {
+          modal.style.display = "none";
+          ui.showAlert(res.data.error, "msg-display error");
         }
       });
   }
@@ -79,6 +66,8 @@ const editDeleteProduct = e => {
       .then(res => {
         if (res.status == 200) {
           window.location = "http://127.0.0.1:5500/UI/admin/products.html";
+        } else {
+          handleUnauthorization();
         }
       });
   }

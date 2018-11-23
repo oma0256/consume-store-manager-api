@@ -80,4 +80,23 @@ class UI {
     const productArea = document.querySelector("#product-detail");
     productArea.innerHTML = output;
   }
+
+  showEditProduct(varPro) {
+    const editForm = document.querySelector("#product-edit");
+    let output = "";
+    output += `<label>Name</label><br><input type="text" id="product-name" value=${
+      varPro.name
+    }><label>Price</label><br><input type="number" id="product-price" value=${
+      varPro.unit_cost
+    }><label>Quantity</label><br><input type="number" id="product-quantity" value=${
+      varPro.quantity
+    }>`;
+    if (varPro.category) {
+      output += `><label>Category</label><br><input type="text" id="product-category" value=${
+        varPro.category
+      }>`;
+    }
+    output += `<button type="submit" class="modal-btn">Submit</button>`;
+    editForm.innerHTML = output;
+  }
 }

@@ -44,7 +44,7 @@ const addProduct = e => {
       "https://oma-store-manager-api.herokuapp.com/api/v2/products",
       productData
     )
-    .then(function(res) {
+    .then(res => {
       if (res.status === 201) {
         productForm.submit();
       } else if (res.status == 401) {
