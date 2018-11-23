@@ -1,4 +1,27 @@
 class UI {
+  showAlert(msg, className) {
+    this.clearAlert();
+    const parent = document.querySelector(".parent-alert");
+    const child = document.querySelector(".child-alert");
+    // Create error message div
+    const alertBox = document.createElement("div");
+    alertBox.className = className;
+    alertBox.appendChild(document.createTextNode(msg));
+    // Append error message to web page
+    parent.insertBefore(alertBox, child);
+    // Notification should disappear after 2.5s
+    setTimeout(() => {
+      this.clearAlert();
+    }, 2500);
+  }
+
+  clearAlert() {
+    const alertBox = document.querySelector(".msg-display");
+    if (alertBox) {
+      alertBox.remove();
+    }
+  }
+
   showSales(saleRecords) {
     const salesArea = document.querySelector("#sale-records");
     let output = "";

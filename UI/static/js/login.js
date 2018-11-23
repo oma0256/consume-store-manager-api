@@ -1,6 +1,7 @@
 // Select login form
 const loginForm = document.querySelector("#login-form");
-http = new Http();
+const http = new Http();
+const ui = new UI();
 
 // Function to handle user login
 const loginUser = e => {
@@ -30,21 +31,10 @@ const loginUser = e => {
         }
         // Store token in local storage
         localStorage.setItem("token", res.data.token);
-        localStorage.setItem("jsutLoggedIn", true);
+        localStorage.setItem("justLoggedIn", true);
         loginForm.submit();
       } else {
-        const loginCard = document.querySelector("#login-card");
-        const loginContainer = document.querySelector("#login-container");
-        // Create error message div
-        const msg = document.createElement("div");
-        msg.className = "msg-display error";
-        msg.appendChild(document.createTextNode(res.data.error));
-        // Append error message to web page
-        loginContainer.insertBefore(msg, loginCard);
-        // Notification should disappear after 1.5s
-        setTimeout(() => {
-          document.querySelector(".msg-display").remove();
-        }, 2500);
+        ui.showAlert(res.data.error, "msg-display error");
       }
     });
 };
