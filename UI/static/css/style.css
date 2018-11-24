@@ -207,6 +207,14 @@ select {
   background-color: #dc3545;
 }
 
+.attendant-btn,
+.sale-detail {
+  padding: 20px;
+  background-color: #4caf50;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
 /*Make site responsive for smaller screens of width 768px and below*/
 @media (max-width: 768px) {
   .header h1,

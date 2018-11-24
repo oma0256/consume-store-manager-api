@@ -28,15 +28,26 @@ class UI {
     if (saleRecords.length < 1) {
       salesArea.innerHTML = "No sales have been made yet";
     } else {
-      output += `<h1 class="center-head">Sales Records</h1><table class="table"><tr><th>Product</th><th>Quantity</th><th>Amount</th></tr>`;
+      output += `<h1 class="center-head">Sales Records</h1><table class="table"><tr><th>Product</th><th>Quantity</th><th>Amount</th><th></th></tr>`;
       saleRecords.forEach(sale => {
         output += `<tr><td>${sale.product_name}</td><td>${
           sale.quantity
-        }</td><td>${sale.total}</td></tr>`;
+        }</td><td>${
+          sale.total
+        }</td><td><a href="sale-detail.html"><button class="sale-detail">View</button></a
+      ><input type="hidden" value=${sale.id} id="sale-id"></td></tr>`;
       });
       output += `</table>`;
       salesArea.innerHTML = output;
     }
+  }
+
+  showSale(sale) {
+    const saleDiv = document.querySelector("#sale-detail");
+    let output = `<p>Product: ${sale.product_name}</p><p>Attendant: ${
+      sale.attendant
+    }</p><p>Quantity: ${sale.quantity}</p><p>Amount: ${sale.total}</p>`;
+    saleDiv.innerHTML = output;
   }
 
   showProducts(products) {
