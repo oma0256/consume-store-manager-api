@@ -6,5 +6,7 @@ http
     if (res.status == 200) {
       const saleRecords = res.data.sale_records;
       ui.showSales(saleRecords);
+    } else {
+      handleUnauthorization();
     }
   });

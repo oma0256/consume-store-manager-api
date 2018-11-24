@@ -3,11 +3,17 @@ const ui = new UI();
 const isAdmin = localStorage.getItem("isAdmin");
 const justLoggedIn = localStorage.getItem("justLoggedIn");
 const productsArea = document.querySelector(".products");
-const productsContainer = document.querySelector("#products-container");
+const productsContainer = document.querySelector("#products-container-2");
+const deleted = localStorage.getItem("deleted");
 
 if (justLoggedIn == "true") {
   ui.showAlert("Welcome", "msg-display success");
   localStorage.setItem("justLoggedIn", false);
+}
+
+if (deleted == "true") {
+  ui.showAlert("Product deleted", "msg-display success");
+  localStorage.setItem("deleted", false);
 }
 
 // Make a request to get all products

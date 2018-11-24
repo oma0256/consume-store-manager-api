@@ -65,6 +65,7 @@ const editDeleteProduct = e => {
       )
       .then(res => {
         if (res.status == 200) {
+          localStorage.setItem("deleted", true);
           window.location = "http://127.0.0.1:5500/UI/admin/products.html";
         } else {
           handleUnauthorization();
