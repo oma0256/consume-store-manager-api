@@ -110,4 +110,18 @@ class UI {
     output += `<button type="submit" class="modal-btn">Submit</button>`;
     editForm.innerHTML = output;
   }
+
+  showAttendants(attendants) {
+    const attendantsTable = document.querySelector(".table");
+    let output = "";
+    output += `<tr><th>Name</th><th>Email</th><th></th></tr>`;
+    attendants.forEach(attendant => {
+      output += `<tr><td>${attendant.first_name} ${
+        attendant.last_name
+      }</td><td>${
+        attendant.email
+      }</td><td><a href="attendant_profile.html"><button class="attendant-btn">View</button></a></td></tr>`;
+    });
+    attendantsTable.innerHTML = output;
+  }
 }
