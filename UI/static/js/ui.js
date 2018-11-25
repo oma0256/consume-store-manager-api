@@ -76,6 +76,7 @@ class UI {
   }
 
   showProduct(product) {
+    const isAdmin = localStorage.getItem("isAdmin");
     let output = "";
     output += `<div id="desc-side"><p>Name: ${product.name}</p><p>Price: ${
       product.unit_cost
