@@ -131,9 +131,12 @@ class UI {
     const attendantProfile = document.querySelector("#attendant-profile");
     let output = `<p>Name: ${attendant.first_name} ${
       attendant.last_name
-    }</p><p>Email: ${
-      attendant.email
-    }</p><button id="make-admin">Make Admin</button>`;
+    }</p><p>Email: ${attendant.email}</p>`;
+    if (attendant.is_admin) {
+      output += `<button class="rights remove-admin">Remove Admin</button>`;
+    } else {
+      output += `<button class="rights make-admin">Make Admin</button>`;
+    }
     attendantProfile.innerHTML = output;
   }
 }

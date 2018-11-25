@@ -5,10 +5,17 @@
   margin: auto;
 }
 
-#make-admin {
+.rights {
   padding: 10px;
-  background-color: #4caf50;
   color: #ffffff;
+}
+
+.make-admin {
+  background-color: #4caf50;
+}
+
+.remove-admin {
+  background-color: #c82333;
 }
 
 .profile-img {
