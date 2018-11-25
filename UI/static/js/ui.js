@@ -139,4 +139,14 @@ class UI {
     }
     attendantProfile.innerHTML = output;
   }
+
+  editBtn(rightsBtn) {
+    if (rightsBtn.textContent == "Make Admin") {
+      rightsBtn.textContent = "Remove Admin";
+      rightsBtn.style.backgroundColor = "#c82333";
+    } else {
+      rightsBtn.textContent = "Make Admin";
+      rightsBtn.style.backgroundColor = "#4caf50";
+    }
+  }
 }
