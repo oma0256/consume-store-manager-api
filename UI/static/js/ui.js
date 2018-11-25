@@ -120,8 +120,20 @@ class UI {
         attendant.last_name
       }</td><td>${
         attendant.email
-      }</td><td><a href="attendant_profile.html"><button class="attendant-btn">View</button></a></td></tr>`;
+      }</td><td><a href="attendant_profile.html"><button class="attendant-btn">View</button></a><input type="hidden" value=${
+        attendant.id
+      } id="attendant-id"></td></tr>`;
     });
     attendantsTable.innerHTML = output;
+  }
+
+  showAttendant(attendant) {
+    const attendantProfile = document.querySelector("#attendant-profile");
+    let output = `<p>Name: ${attendant.first_name} ${
+      attendant.last_name
+    }</p><p>Email: ${
+      attendant.email
+    }</p><button id="make-admin">Make Admin</button>`;
+    attendantProfile.innerHTML = output;
   }
 }

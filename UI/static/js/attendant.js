@@ -49,3 +49,18 @@ http
       window.location = "http://127.0.0.1:5500/UI/admin/login.html";
     }
   });
+
+const storeAttendantId = e => {
+  e.preventDefault();
+  // Check if details button has been clicked
+  if (e.target.className == "attendant-btn") {
+    // Get the product's id
+    const attendantId = e.target.parentElement.nextElementSibling.value;
+    // Store the product's id
+    localStorage.setItem("attendantId", attendantId);
+    window.location = "http://127.0.0.1:5500/UI/admin/attendant_profile.html";
+  }
+};
+
+const attendantsTable = document.querySelector(".table");
+attendantsTable.addEventListener("click", storeAttendantId);

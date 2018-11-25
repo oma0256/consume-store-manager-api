@@ -1,6 +1,8 @@
 /* Design an attendant profile page */
 #attendant-profile {
-  margin-bottom: 100px;
+  width: 50%;
+  text-align: center;
+  margin: auto;
 }
 
 #make-admin {
@@ -16,17 +18,16 @@
 }
 
 /*Make site responsive for smaller screens*/
-@media(max-width: 768px){
+@media (max-width: 768px) {
   /* Stack up the image ontop of the description */
   .profile-img {
     float: none;
     margin: auto;
   }
-  .profile-desc{
+  .profile-desc {
     text-align: center;
   }
   #attendant-profile {
     margin-bottom: 0;
-  }  
+  }
 }
-
