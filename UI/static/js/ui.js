@@ -80,13 +80,13 @@ class UI {
     output += `<div id="desc-side"><p>Name: ${product.name}</p><p>Price: ${
       product.unit_cost
     }</p><p>Quantity: ${product.quantity}</p>`;
-    if (product.category) {
-      output += `<p>Category: ${product.category}</p>`;
+    if (product.category_id) {
+      output += `<p>Category: ${product.category_id}</p>`;
     }
     if (isAdmin == "true") {
       output += `</div><div id="btn-side"><button id="edit-btn" class="modal-display">Edit</button><a><button class="delete-btn">Delete</button></a></div>`;
     } else {
-      output += `</div><div id="btn-side"><button id="add-to-cart">Add to Cart</button><a></div>`;
+      output += `</div><div id="btn-side"><a><button id="add-to-cart">Add to Cart</button></a></div>`;
     }
     const productArea = document.querySelector("#product-detail");
     productArea.innerHTML = output;
