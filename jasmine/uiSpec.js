@@ -70,7 +70,7 @@ describe("test dom methods for products", () => {
   });
 });
 
-describe("test dom function for showing alerts", () => {
+describe("test dom method for showing alerts", () => {
   let parent, child, ui;
   beforeEach(() => {
     parent = document.createElement("div");
@@ -93,5 +93,46 @@ describe("test dom function for showing alerts", () => {
     ui.showAlert("Failed to login", "msg-display error");
     expect(parent.firstElementChild.innerHTML).toBe("Failed to login");
     expect(parent.firstElementChild.className).toBe("msg-display error");
+  });
+});
+
+describe("test dom methods for displaying sales", () => {
+  let ui, sales, sale, expectedOutput, salesArea, saleArea;
+  beforeEach(() => {
+    ui = new UI();
+    sale = {
+      id: 1,
+      product_id: 1,
+      product_name: "Belt",
+      attendant: "Store Attendant",
+      quantity: 1,
+      total: 10000
+    };
+    sales = [sale];
+    salesArea = document.createElement("div");
+    salesArea.id = "sale-records";
+    document.body.appendChild(salesArea);
+    saleArea = document.createElement("div");
+    saleArea.id = "sale-detail";
+    document.body.appendChild(saleArea);
+  });
+  afterEach(() => {
+    document.querySelector("#sale-records").remove();
+    document.querySelector("#sale-detail").remove();
+  });
+  it("display sales", () => {
+    expectedOutput = `<h1 class="center-head">Sales Records</h1><table class="table"><tbody><tr><th>Product</th><th>Quantity</th><th>Amount</th><th></th></tr><tr><td>Belt</td><td>1</td><td>10000</td><td><a href="sale-detail.html"><button class="sale-detail">View</button></a><input type="hidden" value="1" id="sale-id"></td></tr></tbody></table>`;
+    ui.showSales(sales);
+    expect(salesArea.innerHTML).toBe(expectedOutput);
+  });
+  it("display single sale", () => {
+    expectedOutput = `<p>Product: Belt</p><p>Attendant: Store Attendant</p><p>Quantity: 1</p><p>Amount: 10000</p>`;
+    ui.showSale(sale);
+    expect(saleArea.innerHTML).toBe(expectedOutput);
+  });
+  it("display no sales", () => {
+    expectedOutput = "<h2>No sales have been made yet</h2>";
+    ui.showSales([]);
+    expect(salesArea.innerHTML).toBe(expectedOutput);
   });
 });

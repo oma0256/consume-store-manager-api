@@ -26,9 +26,9 @@ class UI {
     const salesArea = document.querySelector("#sale-records");
     let output = "";
     if (saleRecords.length < 1) {
-      salesArea.innerHTML = "No sales have been made yet";
+      salesArea.innerHTML = "<h2>No sales have been made yet</h2>";
     } else {
-      output += `<h1 class="center-head">Sales Records</h1><table class="table"><tr><th>Product</th><th>Quantity</th><th>Amount</th><th></th></tr>`;
+      output += `<h1 class="center-head">Sales Records</h1><table class="table"><tbody><tr><th>Product</th><th>Quantity</th><th>Amount</th><th></th></tr>`;
       saleRecords.forEach(sale => {
         output += `<tr><td>${sale.product_name}</td><td>${
           sale.quantity
@@ -37,7 +37,7 @@ class UI {
         }</td><td><a href="sale-detail.html"><button class="sale-detail">View</button></a
       ><input type="hidden" value=${sale.id} id="sale-id"></td></tr>`;
       });
-      output += `</table>`;
+      output += `</tbody></table>`;
       salesArea.innerHTML = output;
     }
   }
