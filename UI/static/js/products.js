@@ -65,18 +65,19 @@ const addToCart = e => {
   e.preventDefault();
   if (e.target.className == "add-to-cart") {
     const productName =
-      e.target.parentElement.previousElementSibling.childNodes[0].innerHTML;
+      e.target.parentElement.parentElement.previousElementSibling.childNodes[0]
+        .innerHTML;
     const productPrice =
-      e.target.parentElement.previousElementSibling.childNodes[1].innerHTML;
-    const productId =
-      e.target.parentElement.nextElementSibling.nextElementSibling.value;
+      e.target.parentElement.parentElement.previousElementSibling.childNodes[1]
+        .innerHTML;
+    const productId = e.target.parentElement.previousElementSibling.value;
     const product = {
       productName: productName,
       productPrice: productPrice,
       productId: productId
     };
     localStorage.setItem("cart", JSON.stringify(product));
-    window.location = "http://127.0.0.1:5500/UI/attendant/cart.html";
+    window.location = "cart.html";
   }
 };
 

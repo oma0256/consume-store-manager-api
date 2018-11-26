@@ -20,7 +20,7 @@ class User {
   displayAttendant() {
     this.http.get(`${this.url}/users/${this.attendantId}`).then(res => {
       if (res.status == 200) {
-        ui.showAttendant(res.data.attendant);
+        this.ui.showAttendant(res.data.attendant);
       } else {
         handleUnauthorization();
       }
@@ -49,8 +49,8 @@ class User {
       .get(`${this.url}/user/${this.attendantId}/toggle-rights`)
       .then(res => {
         if (res.status == 200) {
-          ui.editBtn(rightsBtn);
-          ui.showAlert(res.data.message, "msg-display success");
+          this.ui.editBtn(rightsBtn);
+          this.ui.showAlert(res.data.message, "msg-display success");
         } else {
           localStorage.setItem("unauthorized", true);
           window.location = "login.html";

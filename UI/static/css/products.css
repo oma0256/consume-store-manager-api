@@ -15,14 +15,9 @@
   display: inline-block;
 }
 
-.product-detail {
-  margin-top: 35px;
+.product-buttons {
   float: right;
-  padding: 10px;
-  display: block;
-  width: 20%;
-  background-color: #007bff;
-  color: #ffffff;
+  margin-top: 20px;
 }
 
 .search-sec {
@@ -47,12 +42,14 @@
   color: #ffffff;
 }
 
-.add-to-cart {
-  padding: 10px;
+.add-to-cart,
+.product-detail {
   background-color: #007bff;
   color: #ffffff;
   margin-bottom: 2px;
-  float: right;
+  display: block;
+  padding: 10px;
+  width: 90px;
 }
 
 /*Make site responsive for screens smaller than 768px*/

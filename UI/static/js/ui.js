@@ -63,12 +63,13 @@ class UI {
           product.name
         }</h2><h3>${
           product.unit_cost
-        }</h3></div><a href="product-detail.html"><button class="product-detail">Details</button></a><input type="hidden" value=${
+        }</h3></div><div class="product-buttons"><a href="product-detail.html"><button class="product-detail">Details</button></a><input type="hidden" value=${
           product.id
-        } id="product-id"></div>`;
+        } id="product-id">`;
         if (isAdmin == "false") {
           output += `<a href="cart.html"><button class="add-to-cart">Add to Cart</button></a>`;
         }
+        output += `</div></div>`;
       });
     }
     // Add products to web page
@@ -154,8 +155,7 @@ class UI {
   showCart(product) {
     const cart = document.querySelector("#cart");
     if (product == "empty") {
-      cart.innerHTML =
-        "<h2>Cart is empty, go to products to make more sales</h2>";
+      cart.innerHTML = `<h2>Cart is empty, go to <a href="products.html" id="link-color">products</a> to make more sales</h2>`;
     } else {
       product = JSON.parse(product);
       cart.innerHTML = `<div class="cart-item"><div class="product-side"><h3>${
