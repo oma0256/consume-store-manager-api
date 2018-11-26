@@ -150,4 +150,21 @@ class UI {
       rightsBtn.style.backgroundColor = "#4caf50";
     }
   }
+
+  showCart(product) {
+    const cart = document.querySelector("#cart");
+    if (product == "empty") {
+      cart.innerHTML =
+        "<h2>Cart is empty, go to products to make more sales</h2>";
+    } else {
+      product = JSON.parse(product);
+      cart.innerHTML = `<div class="cart-item"><div class="product-side"><h3>${
+        product.productName
+      }</h3></div><div class="quantity-side"><input type="hidden" value="1"><input type="number" value="1" class="quantity"></div><div class="price-side"><p>${
+        product.productPrice
+      }</p></div><div class="remove-side"><button class="remove-from-cart">Remove</button></div></div><strong>Total:</strong> <span id="total">${
+        product.productPrice
+      }</span>`;
+    }
+  }
 }

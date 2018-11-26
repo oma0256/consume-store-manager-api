@@ -1,21 +1,10 @@
 // Select cart
-const cart = document.querySelector("#cart");
 const makeSaleBtn = document.querySelector("#make-sale");
 const http = new Http();
 let product = localStorage.getItem("cart");
+const ui = new UI();
 
-if (product == "empty") {
-  cart.innerHTML = "<h2>Cart is empty, go to products to make more sales</h2>";
-} else {
-  product = JSON.parse(product);
-  cart.innerHTML = `<div class="cart-item"><div class="product-side"><h3>${
-    product.productName
-  }</h3></div><div class="quantity-side"><input type="hidden" value="1"><input type="number" value="1" class="quantity"></div><div class="price-side"><p>${
-    product.productPrice
-  }</p></div><div class="remove-side"><button class="remove-from-cart">Remove</button></div></div><strong>Total:</strong> <span id="total">${
-    product.productPrice
-  }</span>`;
-}
+ui.showCart(product);
 
 const calculateCartAmount = (price, e) => {
   // Select cart item
@@ -89,8 +78,7 @@ const makeSale = e => {
     .post("https://oma-store-manager-api.herokuapp.com/api/v2/sales", sale)
     .then(res => {
       if (res.status == 201) {
-        cart.innerHTML =
-          "<h2>Cart is empty, go to products to make more sales</h2>";
+        ui.showCart("empty");
         localStorage.setItem("cart", "empty");
       }
     });
