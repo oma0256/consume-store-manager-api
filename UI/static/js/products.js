@@ -1,10 +1,12 @@
 const http = new Http();
 const ui = new UI();
+const productMethod = new ProductMethod();
 const isAdmin = localStorage.getItem("isAdmin");
 const justLoggedIn = localStorage.getItem("justLoggedIn");
 const productsArea = document.querySelector(".products");
 const productsContainer = document.querySelector("#products-container-2");
 const deleted = localStorage.getItem("deleted");
+const productForm = document.querySelector("#product-form");
 
 if (justLoggedIn == "true") {
   ui.showAlert("Welcome", "msg-display success");
@@ -16,19 +18,7 @@ if (deleted == "true") {
   localStorage.setItem("deleted", false);
 }
 
-// Make a request to get all products
-http
-  .get("https://oma-store-manager-api.herokuapp.com/api/v2/products")
-  .then(res => {
-    // Check if request was successful
-    if (res.status === 200) {
-      const products = res.data.products;
-      ui.showProducts(products);
-      // Run if products weren't fetched
-    } else {
-      handleUnauthorization();
-    }
-  });
+productMethod.displayProducts();
 
 // Function to add a product
 const addProduct = e => {
@@ -44,26 +34,10 @@ const addProduct = e => {
     quantity: parseInt(quantity),
     category_id: category
   };
-  // Make a request to add a product
-  http
-    .post(
-      "https://oma-store-manager-api.herokuapp.com/api/v2/products",
-      productData
-    )
-    .then(res => {
-      if (res.status === 201) {
-        productForm.submit();
-      } else if (res.status == 401) {
-        handleUnauthorization();
-      } else {
-        modal.style.display = "none";
-        ui.showAlert(res.data.error, "msg-display error");
-      }
-    });
+  productMethod.addProductFunc(productData);
 };
 
 if (isAdmin == "true") {
-  const productForm = document.querySelector("#product-form");
   // Listen for from submission
   productForm.addEventListener("submit", addProduct);
 }
@@ -78,10 +52,9 @@ const storeProductId = e => {
     // Store the product's id
     localStorage.setItem("productId", productId);
     if (isAdmin == "true") {
-      window.location = "http://127.0.0.1:5500/UI/admin/product-detail.html";
+      window.location = "product-detail.html";
     } else {
-      window.location =
-        "http://127.0.0.1:5500/UI/attendant/product-detail.html";
+      window.location = "product-detail.html";
     }
   }
 };

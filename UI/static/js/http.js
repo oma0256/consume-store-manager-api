@@ -64,10 +64,11 @@ class Http {
       method: "DELETE",
       headers: headers
     });
-    const resData = await res.json();
+    console.log(res);
+    // const resData = await res.json();
     const output = {
       status: res.status,
-      data: resData
+      data: "Product deleted"
     };
     return output;
   }
