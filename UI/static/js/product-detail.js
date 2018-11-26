@@ -1,8 +1,6 @@
 const http = new Http();
 const ui = new UI();
 const productMethod = new ProductMethod();
-// Get product id
-const productId = localStorage.getItem("productId");
 const isAdmin = localStorage.getItem("isAdmin");
 let output;
 let varPro;
@@ -11,7 +9,6 @@ productMethod.displayProduct();
 
 // Function to edit or delete product
 const editDeleteProduct = e => {
-  const editForm = document.querySelector("#product-edit");
   if (e.target.className == "modal-display") {
     ui.showEditProduct(varPro);
   }

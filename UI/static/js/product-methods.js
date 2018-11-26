@@ -3,6 +3,7 @@ class ProductMethod {
     this.http = new Http();
     this.ui = new UI();
     this.url = "https://oma-store-manager-api.herokuapp.com/api/v2/products";
+    this.productId = localStorage.getItem("productId");
   }
 
   displayProducts() {
@@ -21,7 +22,7 @@ class ProductMethod {
 
   displayProduct() {
     // Make request to get a single product
-    this.http.get(`${this.url}/${productId}`).then(res => {
+    this.http.get(`${this.url}/${this.productId}`).then(res => {
       // Check if product was fetched
       if (res.status === 200) {
         const product = res.data.product;
@@ -39,7 +40,7 @@ class ProductMethod {
       if (res.status === 201) {
         modal.style.display = "none";
         this.displayProducts();
-        this.ui.showAlert("Product added", "msg-display success");
+        this.ui.showAlert(res.data.message, "msg-display success");
       } else if (res.status == 401) {
         handleUnauthorization();
       } else {
@@ -50,11 +51,11 @@ class ProductMethod {
   }
 
   editProduct(productData) {
-    this.http.put(`${this.url}/${productId}`, productData).then(res => {
+    this.http.put(`${this.url}/${this.productId}`, productData).then(res => {
       if (res.status == 200) {
         modal.style.display = "none";
         this.displayProduct();
-        this.ui.showAlert("Product modified", "msg-display success");
+        this.ui.showAlert(res.data.message, "msg-display success");
       } else if (res.status == 401) {
         handleUnauthorization();
       } else {
@@ -65,7 +66,7 @@ class ProductMethod {
   }
 
   deleteProduct() {
-    this.http.delete(`${this.url}/${productId}`).then(res => {
+    this.http.delete(`${this.url}/${this.productId}`).then(res => {
       if (res.status == 200) {
         localStorage.setItem("deleted", true);
         window.location = "products.html";

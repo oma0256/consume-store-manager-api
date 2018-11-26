@@ -1,9 +1,9 @@
 // Select login form
 const loginForm = document.querySelector("#login-form");
-const http = new Http();
-const ui = new UI();
 const unauthorized = localStorage.getItem("unauthorized");
 const isAdmin = localStorage.getItem("isAdmin");
+const ui = new UI();
+const user = new User();
 
 if (unauthorized == "true") {
   if (isAdmin == "true") {
@@ -24,30 +24,7 @@ const loginUser = e => {
     email: email,
     password: password
   };
-
-  // Send login details to api
-  http
-    .post(
-      "https://oma-store-manager-api.herokuapp.com/api/v2/auth/login",
-      loginData
-    )
-    .then(res => {
-      // Check if the request was successful
-      if (res.status === 200) {
-        // Check if it's store owner
-        if (res.data.message == "Store owner logged in successfully") {
-          localStorage.setItem("isAdmin", true);
-        } else {
-          localStorage.setItem("isAdmin", false);
-        }
-        // Store token in local storage
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("justLoggedIn", true);
-        loginForm.submit();
-      } else {
-        ui.showAlert(res.data.error, "msg-display error");
-      }
-    });
+  user.loginStoreUser(loginData, loginForm);
 };
 
 // Listen for form submission
