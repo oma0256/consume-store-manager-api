@@ -103,9 +103,9 @@ class UI {
     }><label>Quantity</label><br><input type="number" id="product-quantity" value=${
       varPro.quantity
     }>`;
-    if (varPro.category) {
-      output += `><label>Category</label><br><input type="text" id="product-category" value=${
-        varPro.category
+    if (varPro.category_id) {
+      output += `<label>Category</label><br><input type="text" id="product-category" value=${
+        varPro.category_id
       }>`;
     }
     output += `<button type="submit" class="modal-btn">Submit</button>`;
