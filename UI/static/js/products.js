@@ -27,12 +27,10 @@ const addProduct = e => {
   const name = document.querySelector("#product-name").value;
   const unitCost = document.querySelector("#product-price").value;
   const quantity = document.querySelector("#product-quantity").value;
-  const category = document.querySelector("#product-category").value;
   const productData = {
     name: name,
     unit_cost: parseInt(unitCost),
-    quantity: parseInt(quantity),
-    category_id: category
+    quantity: parseInt(quantity)
   };
   productMethod.addProductFunc(productData);
 };
