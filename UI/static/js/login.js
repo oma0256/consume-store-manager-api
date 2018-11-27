@@ -14,7 +14,7 @@ if (unauthorized == "true") {
   localStorage.setItem("unauthorized", false);
 }
 
-// Function to handle user login
+// Function to login form submit event
 const loginUser = e => {
   e.preventDefault();
   // Get user login details
@@ -24,6 +24,7 @@ const loginUser = e => {
     email: email,
     password: password
   };
+  // Call funtion to make request to login user
   user.loginStoreUser(loginData, loginForm);
 };
 

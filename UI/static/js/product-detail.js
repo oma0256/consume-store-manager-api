@@ -7,7 +7,6 @@ let varPro;
 
 productMethod.displayProduct();
 
-// Function to edit or delete product
 const editDeleteProduct = e => {
   if (e.target.className == "modal-display") {
     ui.showEditProduct(varPro);
@@ -22,9 +21,11 @@ const editDeleteProduct = e => {
       unit_cost: parseInt(productPrice),
       quantity: parseInt(productQuantity)
     };
+    // Edit a product
     productMethod.editProduct(productData);
   }
   if (e.target.className == "delete-btn") {
+    // Delete a product
     productMethod.deleteProduct();
   }
 };

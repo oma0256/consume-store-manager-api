@@ -4,6 +4,7 @@ let product = localStorage.getItem("cart");
 const ui = new UI();
 const sale = new Sale();
 
+// Display product in cart
 ui.showCart(product);
 
 const calculateCartAmount = (price, e) => {
@@ -75,6 +76,7 @@ const makeSale = e => {
     product_id: parseInt(product.productId),
     quantity: parseInt(quantity)
   };
+  // Make a sale
   sale.makeASale(saleData);
 };
 
@@ -82,4 +84,5 @@ const makeSale = e => {
 cart.addEventListener("click", removeItem);
 // List for a change on cart
 cart.addEventListener("change", updateCart);
+// Listen for click
 makeSaleBtn.addEventListener("click", makeSale);

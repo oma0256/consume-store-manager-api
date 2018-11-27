@@ -9,18 +9,21 @@ const deleted = localStorage.getItem("deleted");
 const productForm = document.querySelector("#product-form");
 
 if (justLoggedIn == "true") {
+  // Display message when user log's in
   ui.showAlert("Welcome", "msg-display success");
   localStorage.setItem("justLoggedIn", false);
 }
 
 if (deleted == "true") {
+  // Display message if product was deleted
   ui.showAlert("Product deleted", "msg-display success");
   localStorage.setItem("deleted", false);
 }
 
+// Call function to make request to display all products
 productMethod.displayProducts();
 
-// Function to add a product
+// Function to listen for add product form submission
 const addProduct = e => {
   e.preventDefault();
   // Select product attributes
@@ -32,6 +35,7 @@ const addProduct = e => {
     unit_cost: parseInt(unitCost),
     quantity: parseInt(quantity)
   };
+  // Call function to make request to add product
   productMethod.addProductFunc(productData);
 };
 
@@ -49,18 +53,16 @@ const storeProductId = e => {
     const productId = e.target.parentElement.nextElementSibling.value;
     // Store the product's id
     localStorage.setItem("productId", productId);
-    if (isAdmin == "true") {
-      window.location = "product-detail.html";
-    } else {
-      window.location = "product-detail.html";
-    }
+    window.location = "product-detail.html";
   }
 };
 
+// Listen for click
 productsContainer.addEventListener("click", storeProductId);
 
 const addToCart = e => {
   e.preventDefault();
+  // Check if add to cart button was clicked
   if (e.target.className == "add-to-cart") {
     const productName =
       e.target.parentElement.parentElement.previousElementSibling.childNodes[0]
@@ -79,4 +81,5 @@ const addToCart = e => {
   }
 };
 
+// Listen for click
 productsArea.addEventListener("click", addToCart);

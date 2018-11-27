@@ -3,12 +3,14 @@ const ui = new UI();
 const salesContainer = document.querySelector("#sale-records");
 const sale = new Sale();
 
+// Display sales
 sale.displaySales();
 
-// Function to store product id
 const storeSaleId = e => {
   e.preventDefault();
+  // Function to store sale id
   handleStoreSaleId(e.target);
 };
 
+// Listen for a click
 salesContainer.addEventListener("click", storeSaleId);
