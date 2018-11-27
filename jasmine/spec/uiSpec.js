@@ -45,14 +45,14 @@ describe("test dom methods for products", () => {
 
   it("display all products store owner", () => {
     localStorage.setItem("isAdmin", true);
-    expectedOutput = `<div class="product"><div class="product-desc"><h2>Belt</h2><h3>10000</h3></div><a href="product-detail.html"><button class="product-detail">Details</button></a><input type="hidden" value="1" id="product-id"></div>`;
+    expectedOutput = `<div class="product"><div class="product-desc"><h2>Belt</h2><h3>10000</h3></div><div class="product-buttons"><a href="product-detail.html"><button class="product-detail">Details</button></a><input type="hidden" value="1" id="product-id"></div></div>`;
     ui.showProducts(products);
     expect(div.innerHTML).toBe(expectedOutput);
   });
 
   it("display all products store attendant", () => {
     localStorage.setItem("isAdmin", false);
-    expectedOutput = `<div class="product"><div class="product-desc"><h2>Belt</h2><h3>10000</h3></div><a href="product-detail.html"><button class="product-detail">Details</button></a><input type="hidden" value="1" id="product-id"></div><a href="cart.html"><button class="add-to-cart">Add to Cart</button></a>`;
+    expectedOutput = `<div class="product"><div class="product-desc"><h2>Belt</h2><h3>10000</h3></div><div class="product-buttons"><a href="product-detail.html"><button class="product-detail">Details</button></a><input type="hidden" value="1" id="product-id"><a href="cart.html"><button class="add-to-cart">Add to Cart</button></a></div></div>`;
     ui.showProducts(products);
     expect(div.innerHTML).toBe(expectedOutput);
   });
@@ -148,7 +148,7 @@ describe("test dom methods for displaying sales", () => {
   });
 
   it("display no sales", () => {
-    expectedOutput = "<h2>No sales have been made yet</h2>";
+    expectedOutput = `<h2 class="center-head">No sales have been made yet</h2>`;
     ui.showSales([]);
     expect(salesArea.innerHTML).toBe(expectedOutput);
   });
@@ -180,8 +180,7 @@ describe("test dom for displaying cart", () => {
   });
 
   it("cart with no product", () => {
-    expectedOutput =
-      "<h2>Cart is empty, go to products to make more sales</h2>";
+    expectedOutput = `<h2>Cart is empty, go to <a href="products.html" id="link-color">products</a> to make more sales</h2>`;
     product = "empty";
     ui.showCart(product);
     expect(cart.innerHTML).toBe(expectedOutput);
