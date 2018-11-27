@@ -20,7 +20,7 @@ class User {
   displayAttendant() {
     this.http.get(`${this.url}/users/${this.attendantId}`).then(res => {
       if (res.status == 200) {
-        this.ui.showAttendant(res.data.attendant);
+        this.ui.showAttendant(res.data.attendant, res.data.sale_records);
       } else {
         handleUnauthorization();
       }
@@ -68,6 +68,7 @@ class User {
           localStorage.setItem("isAdmin", true);
         } else {
           localStorage.setItem("isAdmin", false);
+          localStorage.setItem("attendantId", res.data.attendant_id);
         }
         // Store token in local storage
         localStorage.setItem("token", res.data.token);

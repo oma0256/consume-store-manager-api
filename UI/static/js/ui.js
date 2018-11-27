@@ -26,7 +26,8 @@ class UI {
     const salesArea = document.querySelector("#sale-records");
     let output = "";
     if (saleRecords.length < 1) {
-      salesArea.innerHTML = "<h2>No sales have been made yet</h2>";
+      salesArea.innerHTML =
+        "<h2 class='center-head'>No sales have been made yet</h2>";
     } else {
       output += `<h1 class="center-head">Sales Records</h1><table class="table"><tbody><tr><th>Product</th><th>Quantity</th><th>Amount</th><th></th></tr>`;
       saleRecords.forEach(sale => {
@@ -129,17 +130,21 @@ class UI {
     attendantsTable.innerHTML = output;
   }
 
-  showAttendant(attendant) {
+  showAttendant(attendant, saleRecords) {
+    const isAdmin = localStorage.getItem("isAdmin");
     const attendantProfile = document.querySelector("#attendant-profile");
     let output = `<p>Name: ${attendant.first_name} ${
       attendant.last_name
     }</p><p>Email: ${attendant.email}</p>`;
-    if (attendant.is_admin) {
-      output += `<button class="rights remove-admin">Remove Admin</button>`;
-    } else {
-      output += `<button class="rights make-admin">Make Admin</button>`;
+    if (isAdmin == "true") {
+      if (attendant.is_admin) {
+        output += `<button class="rights remove-admin">Remove Admin</button>`;
+      } else {
+        output += `<button class="rights make-admin">Make Admin</button>`;
+      }
     }
     attendantProfile.innerHTML = output;
+    this.showSales(saleRecords);
   }
 
   editBtn(rightsBtn) {
