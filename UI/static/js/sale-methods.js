@@ -2,6 +2,7 @@ class Sale {
   constructor() {
     this.http = new Http();
     this.ui = new UI();
+    this.saleId = localStorage.getItem("saleId");
     this.url = "https://oma-store-manager-api.herokuapp.com/api/v2/sales";
   }
 
@@ -18,7 +19,7 @@ class Sale {
 
   displaySale() {
     // Make request to get a single product
-    this.http.get(`${this.url}/${saleId}`).then(res => {
+    this.http.get(`${this.url}/${this.saleId}`).then(res => {
       // Check if product was fetched
       if (res.status === 200) {
         const sale = res.data.sale_record;

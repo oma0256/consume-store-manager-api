@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="../static/css/style.css" />
-    <link rel="stylesheet" href="../static/css/user.css" />
-    <title>Store Manager | Attendant</title>
+    <link rel="stylesheet" href="../static/css/sale-detail.css" />
+    <title>Store Manager | Sale</title>
   </head>
   <body>
     <div class="header">
@@ -15,7 +15,7 @@
         <div class="navbar-left">
           <ul>
             <li><a href="cart.html">Cart</a></li>
-            <li><a href="profile.html" class="active">Profile</a></li>
+            <li><a href="profile.html">Profile</a></li>
             <li><a href="products.html">Products</a></li>
           </ul>
         </div>
@@ -27,19 +27,12 @@
       </div>
     </div>
 
-    <div class="parent-alert"><div class="child-alert"></div></div>
-    <div class="card">
-      <h1 class="center-head">Attendant Profile</h1>
-      <div class="container">
-        <div id="attendant-profile"></div>
-        <div id="sale-records"></div>
-      </div>
-    </div>
+    <div class="card"><div class="container" id="sale-detail"></div></div>
 
     <script src="../static/js/extra.js"></script>
     <script src="../static/js/http.js"></script>
     <script src="../static/js/ui.js"></script>
-    <script src="../static/js/attendant-methods.js"></script>
-    <script src="../static/js/attendant-profile.js"></script>
+    <script src="../static/js/sale-methods.js"></script>
+    <script src="../static/js/sale-detail.js"></script>
   </body>
 </html>
