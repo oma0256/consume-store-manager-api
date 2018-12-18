@@ -1,4 +1,3 @@
-// Select cart
 const makeSaleBtn = document.querySelector("#make-sale");
 let product = localStorage.getItem("cart");
 const ui = new UI();

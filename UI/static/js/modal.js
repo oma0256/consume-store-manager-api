@@ -1,5 +1,3 @@
-// Select button to display modal
-const modalDisplayBtn = document.querySelector(".modal-display");
 // Select close symbol
 const close = document.querySelector(".close");
 // Select modal

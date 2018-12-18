@@ -7,7 +7,7 @@ class UI {
     // Create message div
     const alertBox = document.createElement("div");
     alertBox.className = className;
-    alertBox.appendChild(document.createTextNode(msg));
+    alertBox.textContent = msg;
     // Append message to web page
     parent.insertBefore(alertBox, child);
     // Notification should disappear after 2.5s
