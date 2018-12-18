@@ -1,37 +1,33 @@
 class UI {
+  // Method to display notification on web page
   showAlert(msg, className) {
-    // Clear any alerts on web page
     this.clearAlert();
     const parent = document.querySelector(".parent-alert");
     const child = document.querySelector(".child-alert");
-    // Create message div
     const alertBox = document.createElement("div");
     alertBox.className = className;
     alertBox.textContent = msg;
-    // Append message to web page
     parent.insertBefore(alertBox, child);
-    // Notification should disappear after 2.5s
     setTimeout(() => {
       this.clearAlert();
     }, 2500);
   }
 
+  // Method to remove notification from web page
   clearAlert() {
     const alertBox = document.querySelector(".msg-display");
     if (alertBox) {
-      // Remove notification from web page
       alertBox.remove();
     }
   }
 
+  // Method to display sale records to the web page
   showSales(saleRecords) {
     const salesArea = document.querySelector("#sale-records");
     let output = "";
     if (saleRecords.length < 1) {
-      // Run if no sales have been made
       output += "<h2 class='center-head'>No sales have been made yet</h2>";
     } else {
-      // Run if sales have been made
       output += `<h1 class="center-head">Sales Records</h1><table class="table"><tbody><tr><th>Product</th><th>Quantity</th><th>Amount</th><th></th></tr>`;
       saleRecords.forEach(sale => {
         output += `<tr><td>${sale.product_name}</td><td>${
@@ -43,12 +39,11 @@ class UI {
       });
       output += `</tbody></table>`;
     }
-    // Render sales to a table
     salesArea.innerHTML = output;
   }
 
+  // Method to display a single sale record to the web page
   showSale(sale) {
-    // Method to display a single sale record
     const saleDiv = document.querySelector("#sale-detail");
     let output = `<p>Product: ${sale.product_name}</p><p>Attendant: ${
       sale.attendant
@@ -56,15 +51,14 @@ class UI {
     saleDiv.innerHTML = output;
   }
 
+  // Method to display products to the web page
   showProducts(products) {
     const productsArea = document.querySelector(".products");
     const isAdmin = localStorage.getItem("isAdmin");
     let output = "";
-    // Check if there are products
     if (products.length < 1) {
       output += "<h2 class='center-head'>There are no products yet</h2>";
     } else {
-      // Run if the product list is not empty
       products.forEach(product => {
         output += `<div class="product"><div class="product-desc"><h2>${
           product.name
@@ -79,34 +73,30 @@ class UI {
         output += `</div></div>`;
       });
     }
-    // Add products to web page
     productsArea.innerHTML = output;
   }
 
+  // Method to display single product to web page
   showProduct(product) {
-    // Method to display a single product
     const isAdmin = localStorage.getItem("isAdmin");
     let output = "";
     output += `<div id="desc-side"><p>Name: ${product.name}</p><p>Price: ${
       product.unit_cost
     }</p><p>Quantity: ${product.quantity}</p>`;
     if (product.category_id) {
-      // Display category is product has a category
       output += `<p>Category: ${product.category_id}</p>`;
     }
     if (isAdmin == "true") {
-      // Add edit and delete buttons if it is store owner
       output += `</div><div id="btn-side"><button id="edit-btn" class="modal-display">Edit</button><a><button class="delete-btn">Delete</button></a></div>`;
     } else {
-      // Add add to cart button if it is store attendant
       output += `</div><div id="btn-side"><a><button id="add-to-cart">Add to Cart</button></a></div>`;
     }
     const productArea = document.querySelector("#product-detail");
     productArea.innerHTML = output;
   }
 
+  // Method that populates edit form with the product's details
   showEditProduct(varPro) {
-    // Method that populates edit form with the product's details
     const editForm = document.querySelector("#product-edit");
     let output = "";
     output += `<label>Name</label><br><input type="text" id="product-name" value=${
@@ -125,14 +115,13 @@ class UI {
     editForm.innerHTML = output;
   }
 
+  // Method to display store attendants to web page
   showAttendants(attendants) {
     const attendantsTable = document.querySelector(".table");
     let output = "";
     if (attendants.length < 1) {
-      // Run if there are no store attendants
       output += "<h2 class='center-head'>There are no store attendants</h2>";
     } else {
-      // Run if there are store attendants
       output += `<tr><th>Name</th><th>Email</th><th></th></tr>`;
       attendants.forEach(attendant => {
         output += `<tr><td>${attendant.first_name} ${
@@ -144,10 +133,10 @@ class UI {
         } id="attendant-id"></td></tr>`;
       });
     }
-    // Render the attendants in a table
     attendantsTable.innerHTML = output;
   }
 
+  // Method to display single store attendant to web page
   showAttendant(attendant, saleRecords) {
     const isAdmin = localStorage.getItem("isAdmin");
     const attendantProfile = document.querySelector("#attendant-profile");
@@ -155,7 +144,6 @@ class UI {
       attendant.last_name
     }</p><p>Email: ${attendant.email}</p>`;
     if (isAdmin == "true") {
-      // Run if its store owner
       if (attendant.is_admin) {
         output += `<button class="rights remove-admin">Remove Admin</button>`;
       } else {
@@ -163,12 +151,11 @@ class UI {
       }
     }
     attendantProfile.innerHTML = output;
-    // Display attendant's sales
     this.showSales(saleRecords);
   }
 
+  // Method to toggle button for changing attendant's rights
   editBtn(rightsBtn) {
-    // Method to toggle button for changing attendant's rights
     if (rightsBtn.textContent == "Make Admin") {
       rightsBtn.textContent = "Remove Admin";
       rightsBtn.style.backgroundColor = "#c82333";
@@ -178,13 +165,12 @@ class UI {
     }
   }
 
+  // Method to display cart items
   showCart(product) {
     const cart = document.querySelector("#cart");
     if (product == "empty") {
-      // Run if there are no products in the cart
       cart.innerHTML = `<h2>Cart is empty, go to <a href="products.html" id="link-color">products</a> to make more sales</h2>`;
     } else {
-      // Run if there are products in the cart
       product = JSON.parse(product);
       cart.innerHTML = `<div class="cart-item"><div class="product-side"><h3>${
         product.productName

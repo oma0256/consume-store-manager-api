@@ -1,6 +1,4 @@
-// Select close symbol
 const close = document.querySelector(".close");
-// Select modal
 const modal = document.querySelector(".modal");
 
 // Function called to close or display modal

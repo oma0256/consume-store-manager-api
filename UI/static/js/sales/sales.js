@@ -12,5 +12,4 @@ const storeSaleId = e => {
   handleStoreSaleId(e.target);
 };
 
-// Listen for a click
 salesContainer.addEventListener("click", storeSaleId);

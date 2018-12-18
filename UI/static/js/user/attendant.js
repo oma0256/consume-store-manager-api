@@ -6,7 +6,6 @@ const attendantForm = document.querySelector("#attendant-form");
 
 const addAttendant = e => {
   e.preventDefault();
-  // Get attendant attribbutes
   const firstName = document.querySelector("#first-name").value;
   const lastName = document.querySelector("#last-name").value;
   const email = document.querySelector("#email").value;
@@ -28,13 +27,11 @@ attendantBtn.addEventListener("click", addAttendant);
 // Display store attendants
 user.displayAttendants();
 
+// Function to store attendant's id
 const storeAttendantId = e => {
   e.preventDefault();
-  // Check if details button has been clicked
   if (e.target.className == "attendant-btn") {
-    // Get the attendant's id
     const attendantId = e.target.parentElement.nextElementSibling.value;
-    // Store the attendant's id
     localStorage.setItem("attendantId", attendantId);
     window.location = "attendant_profile.html";
   }

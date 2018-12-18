@@ -23,10 +23,8 @@ if (deleted == "true") {
 // Call function to make request to display all products
 productMethod.displayProducts();
 
-// Function to listen for add product form submission
 const addProduct = e => {
   e.preventDefault();
-  // Select product attributes
   const name = document.querySelector("#product-name").value;
   const unitCost = document.querySelector("#product-price").value;
   const quantity = document.querySelector("#product-quantity").value;
@@ -47,11 +45,8 @@ if (isAdmin == "true") {
 // Function to store product id
 const storeProductId = e => {
   e.preventDefault();
-  // Check if details button has been clicked
   if (e.target.className == "product-detail") {
-    // Get the product's id
     const productId = e.target.parentElement.nextElementSibling.value;
-    // Store the product's id
     localStorage.setItem("productId", productId);
     window.location = "product-detail.html";
   }
@@ -60,9 +55,9 @@ const storeProductId = e => {
 // Listen for click
 productsContainer.addEventListener("click", storeProductId);
 
+// Function to add product to cart
 const addToCart = e => {
   e.preventDefault();
-  // Check if add to cart button was clicked
   if (e.target.className == "add-to-cart") {
     const productName =
       e.target.parentElement.parentElement.previousElementSibling.childNodes[0]

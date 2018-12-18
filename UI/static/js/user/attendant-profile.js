@@ -10,14 +10,13 @@ user.displayAttendant();
 const toggleRights = e => {
   e.preventDefault();
   if (e.target.classList.contains("rights")) {
-    // Toggle attendant's rights
     user.toggleAttendantRights(e.target);
   }
 };
 
+// Function to store sale record id
 const storeSaleId = e => {
   e.preventDefault();
-  // Store sale id
   handleStoreSaleId(e.target);
 };
 

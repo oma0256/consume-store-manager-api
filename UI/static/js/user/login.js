@@ -1,4 +1,3 @@
-// Select login form
 const loginForm = document.querySelector("#login-form");
 const unauthorized = localStorage.getItem("unauthorized");
 const ui = new UI();
@@ -9,10 +8,8 @@ if (unauthorized == "true") {
   localStorage.setItem("unauthorized", false);
 }
 
-// Function to login form submit event
 const loginUser = e => {
   e.preventDefault();
-  // Get user login details
   const email = document.querySelector("#email").value;
   const password = document.querySelector("#password").value;
   const loginData = {
@@ -23,5 +20,4 @@ const loginUser = e => {
   user.loginStoreUser(loginData);
 };
 
-// Listen for form submission
 loginForm.addEventListener("submit", loginUser);
