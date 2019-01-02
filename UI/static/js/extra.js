@@ -1,6 +1,6 @@
 const handleUnauthorization = () => {
   localStorage.setItem("unauthorized", "true");
-  window.location = "login.html";
+  window.location = "../login.html";
 };
 
 // Function to store a sale's id

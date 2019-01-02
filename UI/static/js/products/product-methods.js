@@ -18,6 +18,18 @@ class ProductMethod {
     });
   }
 
+  // Make a request to get all deleted products
+  displayDeletedProducts() {
+    this.http.get(this.url).then(res => {
+      if (res.status === 200) {
+        const products = res.data.products_deleted;
+        this.ui.showDeletedProducts(products);
+      } else {
+        handleUnauthorization();
+      }
+    });
+  }
+
   // Make request to get a single product
   displayProduct() {
     this.http.get(`${this.url}/${this.productId}`).then(res => {

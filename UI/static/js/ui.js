@@ -76,6 +76,25 @@ class UI {
     productsArea.innerHTML = output;
   }
 
+  // Method to display deleted products
+  showDeletedProducts(products) {
+    const productsArea = document.querySelector(".products-archive");
+    let output = "";
+    if (products.length < 1) {
+      output +=
+        "<h2 class='center-head'>There are no products in the archive yet</h2>";
+    } else {
+      output += `<h1 class="center-head">Archived Products</h1><table class="table"><tbody><tr><th>Product</th><th>Quantity</th><th>Amount</th></tr>`;
+      products.forEach(product => {
+        output += `<tr><td>${product.name}</td><td>${
+          product.quantity
+        }</td><td>${product.unit_cost}</td></tr>`;
+      });
+      output += `</tbody></table>`;
+    }
+    productsArea.innerHTML = output;
+  }
+
   // Method to display single product to web page
   showProduct(product) {
     const isAdmin = localStorage.getItem("isAdmin");
