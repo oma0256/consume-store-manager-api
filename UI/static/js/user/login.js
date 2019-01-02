@@ -1,10 +1,17 @@
 const loginForm = document.querySelector("#login-form");
 const unauthorized = localStorage.getItem("unauthorized");
+const isAdmin = localStorage.getItem("isAdmin");
 const ui = new UI();
 const user = new User();
 
 if (unauthorized == "true") {
-  ui.showAlert("Please login as a store owner", "msg-display error");
+  if (isAdmin == "true") {
+    ui.showAlert("Please login as a store attendant", "msg-display error");
+  } else if (isAdmin == "false") {
+    ui.showAlert("Please login as a store owner", "msg-display error");
+  } else {
+    ui.showAlert("Please login", "msg-display error");
+  }
   localStorage.setItem("unauthorized", false);
 }
 
