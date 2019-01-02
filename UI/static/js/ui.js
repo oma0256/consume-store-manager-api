@@ -42,12 +42,34 @@ class UI {
     salesArea.innerHTML = output;
   }
 
+  showRevertedSales(sales) {
+    const salesArea = document.querySelector(".products-archive");
+    let output = "";
+    if (sales.length < 1) {
+      output +=
+        "<h2 class='center-head'>There are no sales in the archive yet</h2>";
+    } else {
+      output += `<h1 class="center-head">Archived Sales</h1><table class="table"><tbody><tr><th>Product</th><th>Quantity</th><th>Amount</th><th>Attendant</th></tr>`;
+      sales.forEach(sale => {
+        output += `<tr><td>${sale.product_name}</td><td>${
+          sale.quantity
+        }</td><td>${sale.total}</td><td>${sale.attendant}</td></tr>`;
+      });
+      output += `</tbody></table>`;
+    }
+    salesArea.innerHTML = output;
+  }
+
   // Method to display a single sale record to the web page
   showSale(sale) {
     const saleDiv = document.querySelector("#sale-detail");
+    const isAdmin = localStorage.getItem("isAdmin");
     let output = `<p>Product: ${sale.product_name}</p><p>Attendant: ${
       sale.attendant
     }</p><p>Quantity: ${sale.quantity}</p><p>Amount: ${sale.total}</p>`;
+    if (isAdmin == "true" && sale.revert === false) {
+      output += `<button class="revert-sale">Revert a Sale</button>`;
+    }
     saleDiv.innerHTML = output;
   }
 

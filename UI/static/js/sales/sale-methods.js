@@ -30,6 +30,29 @@ class Sale {
     });
   }
 
+  // Make a request to get all reverted sales
+  displayRevertedSales() {
+    this.http.get(this.url).then(res => {
+      if (res.status === 200) {
+        const sales = res.data.sale_records_reverted;
+        this.ui.showRevertedSales(sales);
+      } else {
+        handleUnauthorization();
+      }
+    });
+  }
+
+  // Make request to revert a sale
+  revertSale() {
+    this.http.put(`${this.url}/${this.saleId}`).then(res => {
+      if (res.status === 200) {
+        this.ui.showAlert(res.data.message, "msg-dispay success");
+      } else {
+        handleUnauthorization();
+      }
+    });
+  }
+
   // Make request to make a sale
   makeASale(sale) {
     this.http.post(this.url, sale).then(res => {
